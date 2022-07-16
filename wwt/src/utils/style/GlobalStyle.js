@@ -2,8 +2,9 @@ import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
 
 const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
   ${normalize};
-  html{ font-size: 62.5%; };
+  html{ font-size: 62.5%;  font-family: "Noto Sans KR", sans-serif; };
   #root{
     position: relative;
   }
@@ -25,9 +26,10 @@ time, mark, audio, video, button {
     padding: 0;
     border: 0;
     font-size: 62.5%;
-    font-family: "AppleSDNeo";
+    /* font-family: "AppleSDNeo"; */
     font-weight: 400;
-    -webkit-touch-callout:none;
+    -webkit-touch-callout:none; 
+    font-family: "Noto Sans KR", sans-serif; 
   }
   *,
   *::after,
@@ -75,7 +77,7 @@ time, mark, audio, video, button {
     padding: 0;
     margin: 0;
     transition: 0.2s;
-    font-family: "AppleSDNeo";
+    /* font-family: "AppleSDNeo"; */
     font-weight: 400;
     font-size: 1.4rem;
   }
@@ -110,6 +112,10 @@ time, mark, audio, video, button {
     height: 100%;
     border: none;
     z-index: -1;
+ }
+ 
+ .scrollbar-thumb{
+  background: pink  !important;
  }
 
 `;
