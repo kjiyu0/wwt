@@ -4,7 +4,7 @@ import { Scrollbar } from "smooth-scrollbar-react";
 import styled from "styled-components";
 import HeaderSearchbar from "../component/HeaderSearchbar";
 import MainContent from "../component/MainContent";
-import { api, days, imageArr, images, months } from "../utils/constant";
+import { api, days, imageArr, images, months, weatherState } from "../utils/constant";
 import rain from "../utils/img/wheater/rain.png";
 
 const MainPage = () => {
@@ -23,14 +23,19 @@ const MainPage = () => {
       .then((data) => data);
     var dataObj = { ...weatherRes };
 
+    weatherState.map((v, i) => {
+      if (dataObj.weather[0].description.indexOf(v.value) !== -1) {
+        dataObj["kor_state"] = v.name;
+      }
+    });
     imageArr.map((v, i) => {
       let pngPop = v.name.replaceAll(".png", "");
-      if (weatherRes.weather[0].description === pngPop) {
+      if (weatherRes.weather[0].description.indexOf(pngPop) !== -1) {
         dataObj["img"] = v;
       }
     });
 
-    console.log(dataObj);
+    setData(dataObj);
 
     const res = await fetch("https://countriesnow.space/api/v0.1/countries/population/cities")
       .then((res) => res.json())
@@ -68,7 +73,7 @@ const MainPage = () => {
       >
         <div id={"first"}>
           <HeaderSearchbar optionList={cityList} setCityList={setCityList} />
-          <MainContent />
+          <MainContent imgData={data?.img} />
         </div>
         <div id={"second"}></div>
       </Scrollbar>
@@ -81,7 +86,6 @@ const MainLayout = styled.div`
   height: 100vh;
   #first {
     height: 100%;
-    border: solid 2px black;
   }
   #second {
     height: 100%;

@@ -22,7 +22,6 @@ const Header = styled.div`
   display: flex;
   justify-content: center;
   // antd select
-  border: solid 2px red;
   padding: 3rem 0;
   .ant-select {
     /* border: solid 2px blue; */

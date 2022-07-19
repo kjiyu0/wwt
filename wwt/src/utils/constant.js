@@ -41,6 +41,7 @@ export const weatherState = [
   { name: "흐림", value: "clouds" },
   { name: "맑음", value: "clean" },
   { name: "비", value: "rain" },
+  { name: "가벼운 비", value: "light rain" },
   { name: "안개", value: "mist" },
   { name: "거센 비", value: "shower" },
   { name: "천둥", value: "thunderstorm" },
