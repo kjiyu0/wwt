@@ -4,7 +4,7 @@ import { Scrollbar } from "smooth-scrollbar-react";
 import styled from "styled-components";
 import HeaderSearchbar from "../component/HeaderSearchbar";
 import MainContent from "../component/MainContent";
-import { api, days, imageArr, images, months, weatherState } from "../utils/constant";
+import { api, days, humidityState, imageArr, images, months, tempState, weatherState } from "../utils/constant";
 import rain from "../utils/img/wheater/rain.png";
 
 const MainPage = () => {
@@ -22,6 +22,21 @@ const MainPage = () => {
       .then((res) => res.json())
       .then((data) => data);
     var dataObj = { ...weatherRes };
+
+    let toString = String(weatherRes.main.feels_like);
+
+    console.log();
+    tempState.map((v, i) => {
+      if (v.value.indexOf(weatherRes.main.feels_like) !== -1) {
+        dataObj["kor_temp_state"] = v.name;
+      }
+    });
+
+    humidityState.map((v, i) => {
+      if (v.value.indexOf(weatherRes.main.humidity) !== -1) {
+        dataObj["kor_humidity_state"] = v.name;
+      }
+    });
 
     weatherState.map((v, i) => {
       if (dataObj.weather[0].description.indexOf(v.value) !== -1) {
@@ -73,7 +88,7 @@ const MainPage = () => {
       >
         <div id={"first"}>
           <HeaderSearchbar optionList={cityList} setCityList={setCityList} />
-          <MainContent imgData={data?.img} />
+          <MainContent imgData={data?.img} data={data} />
         </div>
         <div id={"second"}></div>
       </Scrollbar>

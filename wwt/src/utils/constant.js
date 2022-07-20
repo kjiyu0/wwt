@@ -48,6 +48,21 @@ export const weatherState = [
   { name: "눈", value: "snow" },
 ];
 
+export const humidityState = [
+  { name: "습해요", value: Array.from({ length: 31 }, (v, i) => i + 70) },
+  { name: "뽀송해요", value: Array.from({ length: 21 }, (v, i) => i + 40) },
+  { name: "건조해요", value: Array.from({ length: 21 }, (v, i) => i) },
+];
+
+export const tempState = [
+  { name: "추워요", value: Array.from({ length: 25 }, (v, i) => i + -20) }, //-20 ~ 4
+  { name: "쌀쌀해요", value: Array.from({ length: 7 }, (v, i) => i + 5) }, // 5 ~ 11
+  { name: "선선해요", value: Array.from({ length: 8 }, (v, i) => i + 12) }, // 12 ~ 19
+  { name: "포근해요", value: Array.from({ length: 3 }, (v, i) => i + 20) }, // 20 ~22
+  { name: "살짝 더워요", value: Array.from({ length: 6 }, (v, i) => i + 23) }, // 23~28
+  { name: "더워요", value: Array.from({ length: 12 }, (v, i) => i + 29) }, // 29~40
+];
+
 function importAll(r) {
   let images = {};
   r.keys().map((item, index) => {
