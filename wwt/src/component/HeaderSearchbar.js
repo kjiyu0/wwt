@@ -18,9 +18,12 @@ const HeaderSearchbar = ({ optionList, setCityList }) => {
 
 export default HeaderSearchbar;
 const Header = styled.div`
-  top: 0;
   display: flex;
   justify-content: center;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
   // antd select
   padding: 3rem 0;
   .ant-select {

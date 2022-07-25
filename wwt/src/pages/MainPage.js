@@ -4,7 +4,7 @@ import { Scrollbar } from "smooth-scrollbar-react";
 import styled from "styled-components";
 import HeaderSearchbar from "../component/HeaderSearchbar";
 import MainContent from "../component/MainContent";
-import { api, days, humidityState, imageArr, images, months, tempState, weatherState } from "../utils/constant";
+import { api, clothes, days, humidityState, imageArr, images, months, tempState, weatherState } from "../utils/constant";
 import rain from "../utils/img/wheater/rain.png";
 
 const MainPage = () => {
@@ -25,10 +25,10 @@ const MainPage = () => {
 
     let toString = String(weatherRes.main.feels_like);
 
-    console.log();
     tempState.map((v, i) => {
-      if (v.value.indexOf(weatherRes.main.feels_like) !== -1) {
+      if (v.value.indexOf(Number(weatherRes.main.feels_like.toFixed())) !== -1) {
         dataObj["kor_temp_state"] = v.name;
+        dataObj["season"] = v.season;
       }
     });
 
@@ -43,6 +43,7 @@ const MainPage = () => {
         dataObj["kor_state"] = v.name;
       }
     });
+
     imageArr.map((v, i) => {
       let pngPop = v.name.replaceAll(".png", "");
       if (weatherRes.weather[0].description.indexOf(pngPop) !== -1) {
@@ -50,6 +51,21 @@ const MainPage = () => {
       }
     });
 
+    dataObj["dress"] = [];
+    for (const [key, value] of Object.entries(clothes[0])) {
+      value.map((v, i) => {
+        const random = Math.floor(Math.random() * v.value.length); //랜덤으로 표출
+        if (dataObj.season === v.value[random]) {
+          dataObj["dress"].push({ key: key, name: v.name }); //계절에 맞는 의상들을 담는다. object in Array
+        }
+      });
+    }
+
+    const removeDuplic = (data, key) => {
+      return [...new Map(data.map((v) => [key(v), v])).values()]; // 상,하의,신발 등 다시 묶어줌
+    };
+
+    dataObj["dress"] = removeDuplic(dataObj["dress"], (data) => data.key);
     setData(dataObj);
 
     const res = await fetch("https://countriesnow.space/api/v0.1/countries/population/cities")

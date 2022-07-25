@@ -10,30 +10,40 @@ export const days = ["Sun", "Mon", "Tue", "Wed", "Tur", "Fri", "Sat"];
 export const clothes = [
   {
     top: [
-      { name: "셔츠", value: [0, 1, 2, 3] },
-      { name: "블라우스", value: [0, 1, 2, 3] },
-      { name: "나트", value: [0, 2, 3] },
-      { name: "얇은 니트", value: [0, 2] },
+      { name: "셔츠", value: [0, 2, 3] },
+      { name: "얇은 니트", value: [0] },
       { name: "두꺼운 니트", value: [2, 3] },
       { name: "맨투맨", value: [0, 2, 3] },
       { name: "반팔 티", value: [1] },
-      { name: "나시", value: [1] },
+      { name: "민소매", value: [1] },
+      { name: "얇은 셔츠", value: [1] },
+    ],
+    bottom: [
+      { name: "반바지", value: [1] },
+      { name: "면바지", value: [0, 1, 2] },
+      { name: "청바지", value: [0, 2, 3] },
+      { name: "슬렉스", value: [0, 2, 3] },
+    ],
+    acc: [
+      { name: "두꺼운 목도리", value: [2, 3] },
+      { name: "장갑", value: [2, 3] },
     ],
     outer: [
-      { name: "얇은 가디건", value: [0, 2] },
-      { name: "두꺼운 가디건", value: [2, 3] },
+      { name: "얇은 가디건", value: [0] },
+      { name: "롱 가디건", value: [2] },
       { name: "패딩", value: [3] },
       { name: "트렌치 코트", value: [0, 2] },
       { name: "자켓", value: [0, 2] },
       { name: "두꺼운 코트", value: [3] },
     ],
-    bottom: [
-      { name: "반바지", value: [0, 1, 2] },
-      { name: "면바지", value: [0, 1, 2] },
-      { name: "청바지", value: [0, 2, 3] },
-      { name: "슬렉스", value: [0, 1, 2, 3] },
+    shoes: [
+      { name: "운동화", value: [0, 1, 2] },
+      { name: "샌들", value: [1] },
+      { name: "쪼리", value: [1] },
+      { name: "단화", value: [0, 2] },
+      { name: "워커", value: [2] },
+      { name: "부츠", value: [3] },
     ],
-    acc: [{ name: "두꺼운 니트", value: [3, 4] }],
   },
 ];
 
@@ -55,12 +65,12 @@ export const humidityState = [
 ];
 
 export const tempState = [
-  { name: "추워요", value: Array.from({ length: 25 }, (v, i) => i + -20) }, //-20 ~ 4
-  { name: "쌀쌀해요", value: Array.from({ length: 7 }, (v, i) => i + 5) }, // 5 ~ 11
-  { name: "선선해요", value: Array.from({ length: 8 }, (v, i) => i + 12) }, // 12 ~ 19
-  { name: "포근해요", value: Array.from({ length: 3 }, (v, i) => i + 20) }, // 20 ~22
-  { name: "살짝 더워요", value: Array.from({ length: 6 }, (v, i) => i + 23) }, // 23~28
-  { name: "더워요", value: Array.from({ length: 12 }, (v, i) => i + 29) }, // 29~40
+  { name: "추워요", value: Array.from({ length: 25 }, (v, i) => i + -20), season: 3 }, //-20 ~ 4
+  { name: "쌀쌀해요", value: Array.from({ length: 7 }, (v, i) => i + 5), season: 3 }, // 5 ~ 11
+  { name: "선선해요", value: Array.from({ length: 8 }, (v, i) => i + 12), season: 2 }, // 12 ~ 19
+  { name: "살짝 더워요", value: Array.from({ length: 6 }, (v, i) => i + 23), season: 1 }, // 23 ~ 28
+  { name: "더워요", value: Array.from({ length: 12 }, (v, i) => i + 29), season: 1 }, // 29 ~ 40
+  { name: "포근해요", value: Array.from({ length: 3 }, (v, i) => i + 20), season: 0 }, // 20 ~ 22
 ];
 
 function importAll(r) {
