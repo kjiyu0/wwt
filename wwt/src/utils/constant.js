@@ -25,8 +25,8 @@ export const clothes = [
       { name: "슬렉스", value: [0, 2, 3] },
     ],
     acc: [
-      { name: "두꺼운 목도리", value: [2, 3] },
-      { name: "장갑", value: [2, 3] },
+      { name: "두꺼운 목도리", value: [3] },
+      { name: "장갑", value: [3] },
     ],
     outer: [
       { name: "얇은 가디건", value: [0] },
@@ -59,7 +59,7 @@ export const weatherState = [
 ];
 
 export const humidityState = [
-  { name: "습해요", value: Array.from({ length: 31 }, (v, i) => i + 70) },
+  { name: "습해요", value: Array.from({ length: 36 }, (v, i) => i + 65) },
   { name: "뽀송해요", value: Array.from({ length: 21 }, (v, i) => i + 40) },
   { name: "건조해요", value: Array.from({ length: 21 }, (v, i) => i) },
 ];

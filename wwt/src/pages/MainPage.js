@@ -6,19 +6,20 @@ import HeaderSearchbar from "../component/HeaderSearchbar";
 import MainContent from "../component/MainContent";
 import { api, clothes, days, humidityState, imageArr, images, months, tempState, weatherState } from "../utils/constant";
 import rain from "../utils/img/wheater/rain.png";
+import nightSky from "../utils/img/wheater/sky/sky_night.jpg";
+import morningSky from "../utils/img/wheater/sky/sky_morning.jpg";
 
 const MainPage = () => {
   const today = new Date();
-  const [day, setDay] = useState(days[today.getDay()]);
-  const [month, setMonth] = useState(months[today.getMonth()]);
-  const [year, setYear] = useState(today.getFullYear());
-  const [date, setDate] = useState(today.getDate());
+  const [isNight, setIsNight] = useState(today.getHours() > 20 || today.getHours() < 5 ? true : false);
+  console.log(isNight);
   const [cityList, setCityList] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
+  const [city, setCity] = useState("seoul");
 
-  const fetchWeather = async (lat, lon) => {
-    const weatherRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=${api.key}&units=metric`)
+  const fetchWeather = async (city) => {
+    const weatherRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api.key}&units=metric`)
       .then((res) => res.json())
       .then((data) => data);
     var dataObj = { ...weatherRes };
@@ -84,31 +85,33 @@ const MainPage = () => {
 
   useEffect(() => {
     // getGeo();
-    fetchWeather();
+    fetchWeather(city);
   }, []);
   return (
-    <MainLayout>
-      {isLoading && (
-        <div className="loading-wrap">
-          <SpinFC />
-          <p>
-            도시 데이터를 받아오고 있습니다. <br />
-            잠시만 기다려주세요.
-          </p>
-        </div>
-      )}
-      <Scrollbar
-        onScroll={(e) => {
-          window.localStorage.setItem("offset_y", e.offset.y);
-        }}
-      >
-        <div id={"first"}>
-          <HeaderSearchbar optionList={cityList} setCityList={setCityList} />
-          <MainContent imgData={data?.img} data={data} />
-        </div>
-        <div id={"second"}></div>
-      </Scrollbar>
-    </MainLayout>
+    <>
+      <HeaderSearchbar fetchWeather={fetchWeather} optionList={cityList} setCityList={setCityList} setCity={setCity} city={city} />
+      <MainLayout isNight={isNight}>
+        {isLoading && (
+          <div className="loading-wrap">
+            <SpinFC />
+            <p>
+              도시 데이터를 받아오고 있습니다. <br />
+              잠시만 기다려주세요.
+            </p>
+          </div>
+        )}
+        <Scrollbar
+          onScroll={(e) => {
+            window.localStorage.setItem("offset_y", e.offset.y);
+          }}
+        >
+          <div id={"first"}>
+            <MainContent imgData={data?.img} data={data} />
+          </div>
+          <div id={"second"}></div>
+        </Scrollbar>
+      </MainLayout>
+    </>
   );
 };
 
@@ -117,6 +120,10 @@ const MainLayout = styled.div`
   height: 100vh;
   #first {
     height: 100%;
+    background-image: ${(props) => `url(${props.isNight ? nightSky : morningSky})`};
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
   #second {
     height: 100%;
