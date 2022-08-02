@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "./static/css/main.90badfa8.css",
+    "main.js": "./static/js/main.7d80ddc3.js",
+    "static/media/sky_night.jpg": "./static/media/sky_night.341809f93851c2c3cbda.jpg",
+    "static/media/sky_morning.jpg": "./static/media/sky_morning.8c86b5ff87de99f260f6.jpg",
+    "static/media/snow.png": "./static/media/snow.d92d5822b94e3b1a1faa.png",
+    "static/media/sunrise.jpg": "./static/media/sunrise.406b2326b00807de9ce6.jpg",
+    "static/media/few clouds.png": "./static/media/few clouds.87941cfda98140022da0.png",
+    "static/media/thunderstorm.png": "./static/media/thunderstorm.c4ce43e83378f2f8574e.png",
+    "static/media/clear sky.png": "./static/media/clear sky.72e1ccfc1013618fbe99.png",
+    "static/media/rain.png": "./static/media/rain.72ea84b49eea9acdeee4.png",
+    "static/media/shower rain.png": "./static/media/shower rain.ca402abfd67dd5784c25.png",
+    "static/media/broken clouds.png": "./static/media/broken clouds.62742dcb303c023e0e43.png",
+    "static/media/mist.png": "./static/media/mist.62742dcb303c023e0e43.png",
+    "static/media/overcast clouds.png": "./static/media/overcast clouds.62742dcb303c023e0e43.png",
+    "static/media/scattered clouds.png": "./static/media/scattered clouds.62742dcb303c023e0e43.png",
+    "static/media/sunset.jpg": "./static/media/sunset.8058390a67b14d30d715.jpg",
+    "index.html": "./index.html",
+    "main.90badfa8.css.map": "./static/css/main.90badfa8.css.map",
+    "main.7d80ddc3.js.map": "./static/js/main.7d80ddc3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.90badfa8.css",
+    "static/js/main.7d80ddc3.js"
+  ]
+}
